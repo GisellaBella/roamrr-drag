@@ -1,0 +1,52 @@
+<section ng-controller='HomeController as hc'>
+    <div class="choices_div">
+
+        <div class="logobox">
+            <span class="logo"> Roamrr</span>
+        </div>
+
+        <div class="headline-box col-lg-8-offset-md-2" ng-controller='MainController as mc'>
+
+            <h3 style="padding-top: 50px;"> Thanks {{mc.userInfo.displayName}} for registering!</h3>
+            <h4>Here are your {{mc.formInfo.days}} itinerary {{mc.userInfo.city}} suggestions:</h4>
+        </div>
+
+
+        <div class="col-md-8">
+            <!-- Card Container -->
+            <!-- RESULT     -->
+                <div class="result-card col-lg-4 item" id="result{{ result }}" ng-repeat="st in stuff" draggable result="result">
+                    <h3 class="result-title">{{st.name}}</h3>
+                    <br>
+                    <span class="detail">{{st.location.display_address}}
+                            <br>
+                            Phone: {{st.display_phone}}
+                            <br>
+                            Website: <a href={{st.url}}>Visit Website Here!</a>
+                              <hr>
+                           Rating: <span style="color:red;">{{st.rating}}/
+                            </span>
+                    <p class="description">{{st.snippet_text}}</p>
+                    </span>
+                </div>
+        </div>
+<!-- Draggable Area (board) -->
+        <div ng-controller='MainController as mc'>
+                    <div class="col-md-4"  ng-controller="DragDropCtrl">
+           
+                        <div id="board" droppable drop="handleDrop" ng-repeat="st in stuff" board="board" id="board{{ st }}">
+                 
+
+                            <form id="fixed-button" ng-submit='mc.go()'>
+                                <input type="submit" class="btn btn-warning"></input>
+                            </form>
+                  <h5 style="color:white; line-height: 1em; ">Drag any activities that look good to you-here.<br>
+                Save when you've finished.
+                </h5>
+                        </div>
+                    </div>
+            </div>
+<!-- End Of Board -->
+</div>
+
+</section>
